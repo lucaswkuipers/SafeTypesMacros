@@ -7,6 +7,8 @@ By ensuring conditions at compile time, SafeTypesMacros + SafeTypes allows devel
 
 ## Features
 
+- Macros for non optionals initializers for SafeTypes custom data types through literals (values checked at compile time).
+
 - [x] Type-safe containers that prevent invalid states
 - [x] Enforced runtime constraints at compile time
 - [x] Enhanced code readability and maintainability
@@ -192,9 +194,9 @@ Each type guarantees compliance with its stated constraints so that your functio
 Contributions are what make the open-source community such a fantastic place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
 1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
+2. Create your Branch (`git checkout -b your_branch_name`)
+3. Commit your Changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the Branch (`git push origin your_branch_name`)
 5. Open a Pull Request
 
 ## License
@@ -215,4 +217,4 @@ Some of the relevant sources of inspiration:
 - [Type Driven Design Article Series by Alex Ozun](https://swiftology.io/collections/type-driven-design/))
 
 
-Thank you for considering SafeTypes for your next Swift project – we hope you find it as enjoyable to use as we found it to craft!
+Thank you so much for considering SafeTypes and SafeTypesMacros for your next Swift project – I hope you find it as enjoyable to use as I found it to write!
