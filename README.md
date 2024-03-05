@@ -44,7 +44,7 @@ Below are some of the Macros provided for `SafeTypes` and brief examples of thei
 
 ### Collections
 
-#### [`NonEmptyString`](/Sources/Macros/Macros.swift)
+#### [NonEmptyString](/Sources/Macros/Macros.swift)
 
 Macro for string that's guaranteed to contain at least one character (can be blank or invisible character).
 
@@ -69,7 +69,7 @@ Where number is:
 typealias Number = Numeric & Comparable
 ```
 
-#### [`Positive`](/Sources/Macros/Macros.swift)
+#### [Positive](/Sources/Macros/Macros.swift)
 
 Macro for a number that is guaranteed to be greater than zero (value > 0)
 
@@ -86,7 +86,7 @@ Macro for a number that is guaranteed to be greater than zero (value > 0)
 #Positive() // No argument
 ```
 
-#### [`Negative`](/Sources/Macros/Macros.swift)
+#### [Negative](/Sources/Macros/Macros.swift)
 
 Macro for A number that is guaranteed to be less than zero (value < 0)
 
@@ -103,7 +103,7 @@ Macro for A number that is guaranteed to be less than zero (value < 0)
 #Negative() // No argument
 ```
 
-#### [`NonPositive`](/Sources/Macros/Macros.swift)
+#### [NonPositive](/Sources/Macros/Macros.swift)
 
 Macro for a number that is guaranteed to be less than or equal to zero (value <= 0)
 
