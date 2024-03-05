@@ -27,13 +27,13 @@ Add the following to your `Package.swift` file's dependencies:
 .package(url: "https://github.com/lucaswkuipers/SafeTypesMacros.git", from: "1.0.0")
 ```
 
-Or simply Select `File` > `Add Package Dependencies`, and enter the following URL:
+Or `File` > `Add Package Dependencies`, and enter the following URL:
 
 ```
-https://github.com/lucaswkuipers/SafeTypes.git
+https://github.com/lucaswkuipers/SafeTypesMacros.git
 ```
 
-If you are manipulating the resulting data type I recommend installing the [SafeTypes](https://github.com/lucaswkuipers/SafeTypes) library itself too:
+If you are manipulating the resulting data type it's recommended installing the [SafeTypes](https://github.com/lucaswkuipers/SafeTypes) base library too:
 
 ```swift
 .package(url: "https://github.com/lucaswkuipers/SafeTypes.git", from: "1.0.0")
@@ -243,6 +243,10 @@ Distributed under the MIT License. See [LICENSE](LICENSE) for more information.
 Feel free to reach out to me: 
 
 [![image](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/lucaswk/)
+
+## Swift Package Iindex
+
+SafeTypes can be found at [Swift Package Index](https://swiftpackageindex.com/lucaswkuipers/SafeTypesMacros)
 
 ## Acknowledgements
 
