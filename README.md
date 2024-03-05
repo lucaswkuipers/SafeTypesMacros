@@ -27,8 +27,6 @@ Add the following to your `Package.swift` file's dependencies:
 
 If you are manipulating the resulting data type I recommend installing the [SafeTypes](https://github.com/lucaswkuipers/SafeTypes) library itself too:
 
-Add the following to your `Package.swift` file's dependencies:
-
 ```swift
 .package(url: "https://github.com/lucaswkuipers/SafeTypes.git", from: "1.0.0")
 ```
