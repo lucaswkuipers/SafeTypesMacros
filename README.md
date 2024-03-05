@@ -204,6 +204,12 @@ Each type guarantees compliance with its stated constraints so that your functio
 
 Contributions are what make the open-source community such a fantastic place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
+## What to contribute?
+
+If you want to start contributing but don't know what to work on, try looking at the open [Issues Tab](https://github.com/lucaswkuipers/SafeTypes/issues)
+
+## Steps to contribute
+
 1. Fork the Project
 2. Create your Branch (`git checkout -b your_branch_name`)
 3. Commit your Changes (`git commit -m 'Add some amazing feature'`)
