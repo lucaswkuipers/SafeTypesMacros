@@ -7,7 +7,7 @@ By ensuring conditions at compile time, SafeTypesMacros + [SafeTypes](https://gi
 
 ## Features
 
-- Macros for non optionals initializers for [SafeTypes](https://github.com/lucaswkuipers/SafeTypes) custom data types through literals (values checked at compile time).
+- Macros for non optional initializers for [SafeTypes](https://github.com/lucaswkuipers/SafeTypes) custom data types through literals (values checked at compile time).
 
 - [x] Type-safe containers that prevent invalid states
 - [x] Enforced runtime constraints at compile time
