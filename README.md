@@ -1,13 +1,13 @@
 # SafeTypesMacros
-SafeTypesMacros is a _Swift_ package that extends SafeTypes by adding macro literal initializers for its types.
+SafeTypesMacros is a _Swift_ package that extends [SafeTypes](https://github.com/lucaswkuipers/SafeTypes) by adding macro literal initializers for its types.
 
 ![macros](https://github.com/lucaswkuipers/SafeTypesMacros/assets/59176579/769a0cdb-0eda-4100-891b-71312990d716)
 
-By ensuring conditions at compile time, SafeTypesMacros + SafeTypes allows developers to write more robust and expressive code with reduced boilerplate, increased performance, and improved documentation through its constrained types.
+By ensuring conditions at compile time, SafeTypesMacros + [SafeTypes](https://github.com/lucaswkuipers/SafeTypes) allows developers to write more robust and expressive code with reduced boilerplate, increased performance, and improved documentation through its constrained types.
 
 ## Features
 
-- Macros for non optionals initializers for SafeTypes custom data types through literals (values checked at compile time).
+- Macros for non optionals initializers for [SafeTypes](https://github.com/lucaswkuipers/SafeTypes) custom data types through literals (values checked at compile time).
 
 - [x] Type-safe containers that prevent invalid states
 - [x] Enforced runtime constraints at compile time
@@ -217,4 +217,4 @@ Some of the relevant sources of inspiration:
 - [Type Driven Design Article Series by Alex Ozun](https://swiftology.io/collections/type-driven-design/))
 
 
-Thank you so much for considering SafeTypes and SafeTypesMacros for your next Swift project – I hope you find it as enjoyable to use as I found it to write!
+Thank you so much for considering [SafeTypes](https://github.com/lucaswkuipers/SafeTypes) and SafeTypesMacros for your next Swift project – I hope you find it as enjoyable to use as I found it to write!
