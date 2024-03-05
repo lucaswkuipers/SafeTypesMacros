@@ -121,7 +121,7 @@ Macro for a number that is guaranteed to be less than or equal to zero (value <=
 #NonPositive() // No argument
 ```
 
-#### NonNegative
+#### [NonNegative](/Sources/Macros/Macros.swift)
 
 Macro for number that is guaranteed to be greater than or equal to zero (value >= 0)
 
@@ -139,7 +139,7 @@ Macro for number that is guaranteed to be greater than or equal to zero (value >
 #NonNegative() // No argument
 ```
 
-#### NonZero
+#### [NonZero](/Sources/Macros/Macros.swift)
 
 Macro for a number that is guaranteed to be different than zero (value != 0)
 
@@ -158,7 +158,7 @@ Macro for a number that is guaranteed to be different than zero (value != 0)
 #NonZero() // No argument
 ```
 
-#### `MinusOneToOne`
+#### [MinusOneToOne](/Sources/Macros/Macros.swift)
 
 Macro for number that's within the range of -1 to 1, inclusive. ([-1, 1])
 
@@ -180,7 +180,7 @@ Macro for number that's within the range of -1 to 1, inclusive. ([-1, 1])
 #MinusOneToOne() // No Argument
 ```
 
-#### `ZeroToOne`
+#### [ZeroToOne](/Sources/Macros/Macros.swift)
 
 Macro for number from 0 to 1, inclusive.
 
