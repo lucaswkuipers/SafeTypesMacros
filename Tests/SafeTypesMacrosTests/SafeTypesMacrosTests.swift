@@ -12,7 +12,9 @@ let testMacros: [String: Macro.Type] = [
     "NonPositive" : NonPositiveMacro.self,
     "NonNegative" : NonNegativeMacro.self,
     "NonZero" : NonZeroMacro.self,
-    "NonEmptyString" : NonEmptyStringMacro.self
+    "NonEmptyString" : NonEmptyStringMacro.self,
+    "ZeroToOne" : ZeroToOneMacro.self,
+    "MinusOneToOne" : MinusOneToOneMacro.self,
 ]
 #endif
 
@@ -785,6 +787,56 @@ final class SafeTypesMacros: XCTestCase {
             diagnostics: [
                 .init(
                     message: "Should not be empty",
+                    line: 1,
+                    column: 1,
+                    severity: .error
+                )
+            ],
+            macros: testMacros
+        )
+#else
+        throw XCTSkip("macros are only supported when running tests for the host platform")
+#endif
+    }
+
+    // MARK: - Minus One to One
+
+    func test_minusOneToOneMacro_whenLessThanMinusOne_throwsLessThanMinusOneError() throws {
+#if canImport(Macros)
+        assertMacroExpansion(
+            """
+            #MinusOneToOne(-2)
+            """,
+            expandedSource: """
+            #MinusOneToOne(-2)
+            """,
+            diagnostics: [
+                .init(
+                    message: "Should be greater than or equal to minus one",
+                    line: 1,
+                    column: 1,
+                    severity: .error
+                )
+            ],
+            macros: testMacros
+        )
+#else
+        throw XCTSkip("macros are only supported when running tests for the host platform")
+#endif
+    }
+
+    func test_minusOneToOneMacro_whenGreatThanOne_throwsGreaterThanOneError() throws {
+#if canImport(Macros)
+        assertMacroExpansion(
+            """
+            #MinusOneToOne(2)
+            """,
+            expandedSource: """
+            #MinusOneToOne(2)
+            """,
+            diagnostics: [
+                .init(
+                    message: "Should be less than or equal to one",
                     line: 1,
                     column: 1,
                     severity: .error

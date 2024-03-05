@@ -16,4 +16,10 @@ public macro NonNegative<Number: Numeric & Comparable>(_ value: Number) -> NonNe
 public macro NonZero<Number: Numeric & Comparable>(_ value: Number) -> NonZero<Number> = #externalMacro(module: "Macros", type: "NonZeroMacro")
 
 @freestanding(expression)
+public macro MinusOneToOne<Number: Numeric & Comparable>(_ value: Number) -> MinusOneToOne<Number> = #externalMacro(module: "Macros", type: "MinusOneToOneMacro")
+
+@freestanding(expression)
+public macro ZeroToOne<Number: Numeric & Comparable>(_ value: Number) -> ZeroToOne<Number> = #externalMacro(module: "Macros", type: "ZeroToOneMacro")
+
+@freestanding(expression)
 public macro NonEmptyString(_ value: String) -> NonEmptyString = #externalMacro(module: "Macros", type: "NonEmptyStringMacro")

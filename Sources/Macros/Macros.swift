@@ -80,6 +80,38 @@ public struct NonEmptyStringMacro: ExpressionMacro {
     }
 }
 
+public struct ZeroToOneMacro: ExpressionMacro {
+    public static func expansion(
+        of node: some FreestandingMacroExpansionSyntax,
+        in context: some MacroExpansionContext
+    ) throws -> ExprSyntax {
+        let number = try node.getNumber()
+        guard number.isLessThanOrEqualToOne else {
+            throw SafeTypesMacrosError.greaterThanOne
+        }
+        guard number.isGreaterThanOrEqualToZero else {
+            throw SafeTypesMacrosError.lessThanZero
+        }
+        return "ZeroToOne(\(raw: number)).unsafelyUnwrapped"
+    }
+}
+
+public struct MinusOneToOneMacro: ExpressionMacro {
+    public static func expansion(
+        of node: some FreestandingMacroExpansionSyntax,
+        in context: some MacroExpansionContext
+    ) throws -> ExprSyntax {
+        let number = try node.getNumber()
+        guard number.isLessThanOrEqualToOne else {
+            throw SafeTypesMacrosError.greaterThanOne
+        }
+        guard number.isGreaterThanOrEqualToMinusOne else {
+            throw SafeTypesMacrosError.lessThanMinusOne
+        }
+        return "MinusOneToOne(\(raw: number)).unsafelyUnwrapped"
+    }
+}
+
 typealias Number = Numeric & Comparable
 
 extension FreestandingMacroExpansionSyntax {
@@ -111,7 +143,9 @@ struct SafeTypesMacrosPlugin: CompilerPlugin {
         NonPositiveMacro.self,
         NonNegativeMacro.self,
         NonZeroMacro.self,
-        NonEmptyStringMacro.self
+        NonEmptyStringMacro.self,
+        ZeroToOneMacro.self,
+        MinusOneToOneMacro.self
     ]
 }
 
@@ -124,6 +158,9 @@ enum SafeTypesMacrosError: String, Error, CustomStringConvertible {
     case negative = "Should not be negative"
     case zero = "Should not be zero"
     case empty = "Should not be empty"
+    case lessThanZero = "Should be greater than or equal to zero"
+    case greaterThanOne = "Should be less than or equal to one"
+    case lessThanMinusOne = "Should be greater than or equal to minus one"
 
     var description: String {
         rawValue
@@ -141,5 +178,17 @@ extension Numeric where Self: Comparable {
 
     var isZero: Bool {
         self == .zero
+    }
+
+    var isLessThanOrEqualToOne: Bool {
+        self <= 1
+    }
+
+    var isGreaterThanOrEqualToZero: Bool {
+        self >= 0
+    }
+
+    var isGreaterThanOrEqualToMinusOne: Bool {
+        self >= -1
     }
 }
