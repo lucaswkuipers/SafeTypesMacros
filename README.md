@@ -1,4 +1,7 @@
 # SafeTypesMacros
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Flucaswkuipers%2FSafeTypesMacros%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/lucaswkuipers/SafeTypesMacros)
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Flucaswkuipers%2FSafeTypesMacros%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/lucaswkuipers/SafeTypesMacros)
+
 SafeTypesMacros is a _Swift_ package that extends [SafeTypes](https://github.com/lucaswkuipers/SafeTypes) by adding macro literal initializers for its types.
 
 ![macros](https://github.com/lucaswkuipers/SafeTypesMacros/assets/59176579/769a0cdb-0eda-4100-891b-71312990d716)
