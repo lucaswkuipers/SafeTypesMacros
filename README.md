@@ -3,7 +3,7 @@ SafeTypesMacros is a _Swift_ package that extends SafeTypes by adding macro lite
 
 ![macros](https://github.com/lucaswkuipers/SafeTypesMacros/assets/59176579/769a0cdb-0eda-4100-891b-71312990d716)
 
-By ensuring conditions such as non-emptiness or value range at compile time, SafeTypes allows developers to write more robust and expressive code with reduced boilerplate, increased performance, and improved documentation through types.
+By ensuring conditions at compile time, SafeTypesMacros + SafeTypes allows developers to write more robust and expressive code with reduced boilerplate, increased performance, and improved documentation through its constrained types.
 
 ## Features
 
@@ -20,70 +20,172 @@ By ensuring conditions such as non-emptiness or value range at compile time, Saf
 Add the following to your `Package.swift` file's dependencies:
 
 ```swift
-.package(url: "https://github.com/lucaswkuipers/SafeTypes.git", from: "1.0.0")
+.package(url: "https://github.com/lucaswkuipers/SafeTypesMacros.git", from: "1.0.0")
 ```
 
-And then import wherever needed: `import SafeTypes`
+And then import wherever needed: `import SafeTypesMacros`
 
 ## Usage
 
-Below are some of the types provided by SafeTypes and brief examples of their usage:
+Below are some of the Macros provided for `SafeTypes` and brief examples of their usage:
 
-### `MultiElementsArray`
+### Collections
 
-An array that is guaranteed to have more than one element.
+#### [`NonEmptyString`](/Sources/Macros/Macros.swift)
 
-```swift
-let multiElements = MultiElementsArray(1, 2, 3)
-```
-
-### `NonEmptyArray`
-
-An array that is guaranteed to have at least one element.
+Macro for string that's guaranteed to contain at least one character (can be blank or invisible character).
 
 ```swift
-let nonEmpty = NonEmptyArray(array: ["first", "second"])
-print(nonEmpty.head) // "first"
-print(nonEmpty.tail) // ["second"]
+// ✅ Compiles
+
+#NonEmptyString("Alice") // NonEmptyString
+#NonEmptyString(" Bob ") // NonEmptyString
+#NonEmptyString(" ") // NonEmptyString
+
+// ❌ Fails
+
+#NonEmptyString("") // String can't be empty
+#NonEmptyString() // No argument
 ```
 
-### `NonEmptyString`
+### Numbers
 
-A string that's guaranteed to contain at least one character (can be empty character).
+Where number is:
 
 ```swift
-let nonEmptyString = NonEmptyString("Hello!")
+typealias Number = Numeric & Comparable
 ```
 
-### Numeric Types
+#### [`Positive`](/Sources/Macros/Macros.swift)
 
-Here are some of our numeric types that help avoid incorrect values:
+Macro for a number that is guaranteed to be greater than zero (value > 0)
 
 ```swift
-let nonZero = NonZero(5)
-let positive = Positive(42)
-let negative = Negative(-3)
-let nonPositive = NonPositive(0)
-let nonNegative = NonNegative(0.1)
+// ✅ Compiles
+
+#Positive(123) // Positive<Int>
+#Positive(42.69) // Positive<Double>
+
+// ❌ Fails
+
+#Positive(-1) // Can't be negative
+#Positive(0) // Can't be zero
+#Positive() // No argument
 ```
 
-### `MinusOneToOne`
+#### [`Negative`](/Sources/Macros/Macros.swift)
 
-Represents a value that's within the range of -1 to 1, inclusive.
+Macro for A number that is guaranteed to be less than zero (value < 0)
 
 ```swift
-let bounded = MinusOneToOne(0.5)
+// ✅ Compiles
+
+#Negative(-123) // Negative<Int>
+#Negative(-42.69) // Negative<Double>
+
+// ❌ Fails
+
+#Negative(1) // Can't be positive
+#Negative(0) // Can't be zero
+#Negative() // No argument
 ```
 
-### `ZeroToOne`
+#### [`NonPositive`](/Sources/Macros/Macros.swift)
 
-Represents a value from 0 to 1, inclusive.
+Macro for a number that is guaranteed to be less than or equal to zero (value <= 0)
 
 ```swift
-let normal = ZeroToOne(0.999)
+// ✅ Compiles
+
+#NonPositive(-123) // NonPositive<Int>
+#NonPositive(-42.69) // NonPositive<Double>
+#NonPositive(0) // NonPositive<Int>
+#NonPositive(0.0) // NonPositive<Double>
+
+// ❌ Fails
+
+#NonPositive(1) // Can't be positive
+#NonPositive() // No argument
 ```
 
-Each type guarantees compliance with its stated constraints such as non-zeroness, positivity, or negativity, so that your functions and methods can rely on those qualities.
+#### NonNegative
+
+Macro for number that is guaranteed to be greater than or equal to zero (value >= 0)
+
+```swift
+// ✅ Compiles
+
+#NonNegative(123) // NonNegative<Int>
+#NonNegative(42.69) // NonNegative<Double>
+#NonNegative(0) // NonNegative<Int>
+#NonNegative(0.0) // NonNegative<Double>
+
+// ❌ Fails
+
+#NonNegative(-273.15) // Can't be negative
+#NonNegative() // No argument
+```
+
+#### NonZero
+
+Macro for a number that is guaranteed to be different than zero (value != 0)
+
+```swift
+// ✅ Non Optional Initializers
+
+#NonZero(123) // NonZero<Int>
+#NonZero(42.69) // NonZero<Double>
+#NonZero(-123) // NonZero<Int>
+#NonZero(-42.69) // NonZero<Double>
+
+// ❌ Fails to compile
+
+#NonZero(0) // Can't be zero
+#NonZero(0.0) // Can't be zero
+#NonZero() // No argument
+```
+
+#### `MinusOneToOne`
+
+Macro for number that's within the range of -1 to 1, inclusive. ([-1, 1])
+
+```swift
+// ✅ Compiles
+
+#MinusOneToOne(-1) // MinusOneToOne<Int>
+#MinusOneToOne(-1.0) // MinusOneToOne<Double>
+#MinusOneToOne(-0.314159) // MinusOneToOne<Double>
+#MinusOneToOne(0) // MinusOneToOne<Int>
+#MinusOneToOne(0.0) // MinusOneToOne<Double>
+#MinusOneToOne(0.1234) // MinusOneToOne<Double>
+#MinusOneToOne(1) // MinusOneToOne<Double>
+
+// ❌ Fails
+
+#MinusOneToOne(-1.1) // Can't be less than -1
+#MinusOneToOne(42.1) // Can't be greater than 1
+#MinusOneToOne() // No Argument
+```
+
+#### `ZeroToOne`
+
+Macro for number from 0 to 1, inclusive.
+
+```swift
+// ✅ Compiles
+#ZeroToOne(0) // ZeroToOne<Int>
+#ZeroToOne(0.0) // ZeroToOne<Double>
+#ZeroToOne(0.1234) // ZeroToOne<Double>
+#ZeroToOne(1) // ZeroToOne<Double>
+
+// ❌ Fails
+
+#ZeroToOne(-0.5) // Can't be less than 0
+#ZeroToOne(42.1) // Can't be greater than 1
+#ZeroToOne() // No argument
+```
+
+Each type guarantees compliance with its stated constraints so that your functions and methods can rely on those qualities and pass them on (preserving information).
 
 ## Contributing
 
@@ -101,14 +203,16 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## Contact
 
-Your Name – [@YourTwitter](https://twitter.com/YourTwitter)
+Feel free to reach out to me: 
 
-Project Link: [https://github.com/username/SafeTypes](https://github.com/username/SafeTypes)
+[![image](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/lucaswk/)
 
 ## Acknowledgements
 
-- [Your attribution here](#)
+Some of the relevant sources of inspiration:
 
----
+- [Point-Free's NonEmpty](https://github.com/pointfreeco/swift-nonempty)
+- [Type Driven Design Article Series by Alex Ozun](https://swiftology.io/collections/type-driven-design/))
+
 
 Thank you for considering SafeTypes for your next Swift project – we hope you find it as enjoyable to use as we found it to craft!
