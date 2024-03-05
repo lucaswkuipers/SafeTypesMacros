@@ -3,7 +3,7 @@ SafeTypesMacros is a _Swift_ package that extends [SafeTypes](https://github.com
 
 ![macros](https://github.com/lucaswkuipers/SafeTypesMacros/assets/59176579/769a0cdb-0eda-4100-891b-71312990d716)
 
-By ensuring conditions at compile time, SafeTypesMacros + [SafeTypes](https://github.com/lucaswkuipers/SafeTypes) allows developers to write more robust and expressive code with reduced boilerplate, increased performance, and improved documentation through its constrained types.
+By ensuring conditions at compile time, SafeTypes allows developers to write safer, more robust and expressive code with reduced boilerplate, increased performance, and improved documentation through its constrained types.
 
 ## Features
 
