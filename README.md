@@ -25,10 +25,22 @@ Add the following to your `Package.swift` file's dependencies:
 .package(url: "https://github.com/lucaswkuipers/SafeTypesMacros.git", from: "1.0.0")
 ```
 
+Or simply Select `File` > `Add Package Dependencies`, and enter the following URL:
+
+```
+https://github.com/lucaswkuipers/SafeTypes.git
+```
+
 If you are manipulating the resulting data type I recommend installing the [SafeTypes](https://github.com/lucaswkuipers/SafeTypes) library itself too:
 
 ```swift
 .package(url: "https://github.com/lucaswkuipers/SafeTypes.git", from: "1.0.0")
+```
+
+or `File` > `Add Package Dependencies`, and enter the following URL:
+
+```
+https://github.com/lucaswkuipers/SafeTypes.git
 ```
 
 And then import wherever needed: 
