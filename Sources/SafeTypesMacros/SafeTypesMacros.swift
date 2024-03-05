@@ -1,11 +1,19 @@
-// The Swift Programming Language
-// https://docs.swift.org/swift-book
+import SafeTypes
 
-/// A macro that produces both a value and a string containing the
-/// source code that generated the value. For example,
-///
-///     #stringify(x + y)
-///
-/// produces a tuple `(x + y, "x + y")`.
 @freestanding(expression)
-public macro stringify<T>(_ value: T) -> (T, String) = #externalMacro(module: "SafeTypesMacrosMacros", type: "StringifyMacro")
+public macro Positive<Number: Numeric & Comparable>(_ value: Number) -> Positive<Number> = #externalMacro(module: "Macros", type: "PositiveMacro")
+
+@freestanding(expression)
+public macro Negative<Number: Numeric & Comparable>(_ value: Number) -> Negative<Number> = #externalMacro(module: "Macros", type: "NegativeMacro")
+
+@freestanding(expression)
+public macro NonPositive<Number: Numeric & Comparable>(_ value: Number) -> NonPositive<Number> = #externalMacro(module: "Macros", type: "NonPositiveMacro")
+
+@freestanding(expression)
+public macro NonNegative<Number: Numeric & Comparable>(_ value: Number) -> NonNegative<Number> = #externalMacro(module: "Macros", type: "NonNegativeMacro")
+
+@freestanding(expression)
+public macro NonZero<Number: Numeric & Comparable>(_ value: Number) -> NonZero<Number> = #externalMacro(module: "Macros", type: "NonZeroMacro")
+
+@freestanding(expression)
+public macro NonEmptyString(_ value: String) -> NonEmptyString = #externalMacro(module: "Macros", type: "NonEmptyStringMacro")
