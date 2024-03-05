@@ -212,7 +212,7 @@ Contributions are what make the open-source community such a fantastic place to 
 
 ## License
 
-Distributed under the MIT License. See `LICENSE` for more information.
+Distributed under the MIT License. See [LICENSE](LICENSE) for more information.
 
 ## Contact
 
